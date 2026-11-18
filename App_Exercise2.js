@@ -1,5 +1,5 @@
 import {StatusBar} from 'expo-status-bar';
-import {StyleSheet, Text, View, FlatList, SectionList, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, FlatList, SectionList, TouchableOpacity, Alert} from 'react-native';
 
 const datasource = [
     {
@@ -33,10 +33,11 @@ const datasource = [
     }
 ];
 
-const renderItem = ({item}) => {
+const renderItem = ({item, index, section}) => {
     return (
-        <TouchableOpacity style={styles.opacityStyle}>
-            <Text style={styles.textStyle}>{item.key}</Text>
+        <TouchableOpacity style={styles.opacityStyle}
+        onPress={()=>Alert.alert(section.title +" "+  item.key + " is selected!")}>
+            <Text style={styles.textStyle}>{index+1}. {section.title} {item.key}</Text>
         </TouchableOpacity>
     );
 };
